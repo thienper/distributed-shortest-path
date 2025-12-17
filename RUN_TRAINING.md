@@ -167,7 +167,7 @@ training_data/
 cat models/results.json | python -m json.tool
 
 # Launch web app (sau khi train)
-.venv\Scripts\python.exe web_app/app.py
+".venv\Scripts\python.exe" -m web_app.app
 ```
 
 ---
