@@ -1,6 +1,13 @@
 {
+  "num_samples": 500,
   "input_dim": 1,
-  "embedding_dim": 8,
-  "hidden_dim": 16,
-  "num_layers": 2
+  "embedding_dim": 32,
+  "hidden_dim": 64,
+  "num_layers": 2,
+  "batch_size": 32,
+  "num_epochs": 50,
+  "learning_rate": 0.001,
+  "weight_decay": 1e-05,
+  "feature_type": "degree",
+  "train_test_split": 0.8
 }

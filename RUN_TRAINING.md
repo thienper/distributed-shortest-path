@@ -154,20 +154,20 @@ training_data/
 
 ```bash
 # Train graph_large, 50 epochs
-python train_model.py
+.venv\Scripts\python.exe train_model.py
 
 # Train graph_large, 100 epochs
-python train_model.py --epochs 100
+.venv\Scripts\python.exe train_model.py --epochs 100
 
 # Train other sizes
-python train_model.py --graph medium --epochs 50
-python train_model.py --graph small --epochs 20
+.venv\Scripts\python.exe train_model.py --graph medium --epochs 50
+.venv\Scripts\python.exe train_model.py --graph small --epochs 20
 
 # Check training results
 cat models/results.json | python -m json.tool
 
 # Launch web app (sau khi train)
-python web_app/app.py
+.venv\Scripts\python.exe web_app/app.py
 ```
 
 ---
