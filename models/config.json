@@ -1,0 +1,6 @@
+{
+  "input_dim": 1,
+  "embedding_dim": 8,
+  "hidden_dim": 16,
+  "num_layers": 2
+}

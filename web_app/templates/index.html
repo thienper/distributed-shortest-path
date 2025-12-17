@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Shortest Path Prediction | Big Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🔴</span>
+                <h1>Shortest Path Prediction Dashboard</h1>
+                <span class="subtitle">ML-based Graph Analysis with Big Data</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Panel: Graph Visualization -->
+            <div class="panel left-panel">
+                <div class="panel-header">
+                    <h2>📍 Interactive Graph</h2>
+                    <div class="info-text" id="graph-info">Loading graph...</div>
+                </div>
+                <div id="cy" class="graph-container"></div>
+
+                <!-- Selected Nodes Display -->
+                <div class="selected-nodes">
+                    <div class="node-select">
+                        <label>Source Node:</label>
+                        <span id="source-node" class="node-badge">None</span>
+                    </div>
+                    <div class="node-select">
+                        <label>Target Node:</label>
+                        <span id="target-node" class="node-badge">None</span>
+                    </div>
+                    <button id="find-path-btn" class="btn-primary" disabled>
+                        ⚡ Find Shortest Path
+                    </button>
+                    <button id="reset-btn" class="btn-secondary">Reset</button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Results & Metrics -->
+            <div class="panel right-panel">
+                <!-- Summary Stats -->
+                <div class="stats-box">
+                    <h3>📊 Summary Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Nodes</span>
+                            <span class="stat-value" id="stat-nodes">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Edges</span>
+                            <span class="stat-value" id="stat-edges">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Predictions</span>
+                            <span class="stat-value" id="stat-predictions">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Accuracy</span>
+                            <span class="stat-value" id="stat-accuracy">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Path Result -->
+                <div class="result-box" id="result-box" style="display:none;">
+                    <h3>✅ Path Found</h3>
+                    <div class="path-info">
+                        <div class="path-row">
+                            <strong>ML Prediction:</strong>
+                            <code id="ml-path">-</code>
+                            <span class="cost" id="ml-cost">Cost: 0</span>
+                        </div>
+                        <div class="path-row">
+                            <strong>Dijkstra (Ground Truth):</strong>
+                            <code id="dij-path">-</code>
+                            <span class="cost" id="dij-cost">Cost: 0</span>
+                        </div>
+                        <div class="path-row">
+                            <strong>Status:</strong>
+                            <span id="path-status" class="status-badge">-</span>
+                        </div>
+                        <div class="path-row">
+                            <strong>Latency:</strong>
+                            <span id="latency">0 ms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Metrics -->
+                <div class="metrics-box">
+                    <h3>📈 Performance Metrics</h3>
+                    <div class="metric-item">
+                        <label>Avg Latency (ms)</label>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="latency-bar" style="width:0%"></div>
+                            <span class="metric-value" id="metric-latency">0 ms</span>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <label>Model Accuracy</label>
+                        <div class="progress-bar">
+                            <div class="progress-fill accuracy" id="accuracy-bar" style="width:0%"></div>
+                            <span class="metric-value" id="metric-accuracy">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Predictions -->
+                <div class="samples-box">
+                    <h3>📋 Recent Predictions</h3>
+                    <div id="samples-table" class="samples-table">
+                        <div class="empty-state">No predictions yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/graph-viz.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>

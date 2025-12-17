@@ -1,0 +1,14 @@
+
+======================================================================
+OPTIMIZED GRAPHSAGE TRAINING (CPU) - LARGE
+======================================================================
+
+Traceback (most recent call last):
+  File "t:\NAM_4\NAM_4_HK1\DU LIEU LON\BT_LON\streaming-event-clustering\distributed-shortest-path\fast_train.py", line 241, in <module>
+    main()
+  File "t:\NAM_4\NAM_4_HK1\DU LIEU LON\BT_LON\streaming-event-clustering\distributed-shortest-path\fast_train.py", line 51, in main
+    print(f"\U0001f4ca Graph: {n_nodes} nodes, {len(edges_df)} edges")
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4ca' in position 0: character maps to <undefined>

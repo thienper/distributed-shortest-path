@@ -1,0 +1,24 @@
+
+======================================================================
+OPTIMIZED GRAPHSAGE TRAINING (CPU) - LARGE
+======================================================================
+
+[GRAPH] 5000 nodes, 14991 edges
+
+[GEN] Generating training samples...
+[OK] Generated 1000 samples
+     Cost stats: Mean=7.70, Std=1.85, Min=2, Max=14
+
+[OK] Training data saved to: training_data\graph_large\training_samples.csv
+[OK] Metadata saved to: training_data\graph_large\metadata.json
+
+[SPLIT] Dataset split:
+        Train: 800, Test: 200
+
+[MODEL] 1905 parameters (ultra-fast)
+
+[TRAIN] Training (100 epochs, batch_size=16)... (~2-5 min)
+
+Epoch  | Train Loss | Test Loss | Test RMSE | Test MAPE
+-------+-----------+-----------+-----------+----------
+    1  |  103.4133 |   68.3328 |    8.2664 |    67.3%
