@@ -1,6 +1,12 @@
 # Distributed Shortest Path Prediction with Machine Learning
 
-A Big Data project using GraphSAGE, Kafka, and Spark to predict shortest paths in large graphs with ML instead of traditional Dijkstra algorithm.
+A Big Data project using GraphSAGE to predict shortest paths in large graphs with ML instead of traditional Dijkstra algorithm.
+
+## 🚀 Quick Start
+
+**New users? Start here:** [SETUP.md](SETUP.md)
+
+**Training & Testing:** [RUN_TRAINING.md](RUN_TRAINING.md)
 
 ## Features
 
