@@ -346,7 +346,7 @@ function highlightPath(path) {
     // 1. Reset toàn bộ state trước
     cy.nodes().removeClass('path dimmed');
     cy.edges().removeClass('path visible dimmed');
-    
+
     // Reset ALL edge styles
     cy.edges().forEach(edge => {
         edge.style('opacity', 0.02);
