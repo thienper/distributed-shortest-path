@@ -33,8 +33,8 @@ CORS(app)
 
 # Initialize services
 try:
-    init_predictor_service("medium")
-    graph_loader = get_default_graph_loader("medium")
+    init_predictor_service()
+    graph_loader = get_default_graph_loader()
 except Exception as e:
     print(f"[WARNING] Could not initialize services: {e}")
     graph_loader = None

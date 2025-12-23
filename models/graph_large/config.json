@@ -1,9 +1,0 @@
-{
-  "input_dim": 1,
-  "embedding_dim": 8,
-  "hidden_dim": 16,
-  "num_layers": 2,
-  "graph_size": "large",
-  "training_samples": 1000,
-  "training_epochs": 48
-}

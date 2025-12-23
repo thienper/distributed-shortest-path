@@ -64,9 +64,8 @@ class GraphLoader:
         
         return np.array(features)
 
-def get_default_graph_loader(size: str = "medium") -> GraphLoader:
-    """Get default graph loader"""
-    graph_dir = config.GRAPHS_DIR / f"graph_{size}"
-    if not graph_dir.exists():
-        raise FileNotFoundError(f"Graph directory not found: {graph_dir}")
-    return GraphLoader(graph_dir)
+def get_default_graph_loader() -> GraphLoader:
+    """Get graph_medium loader"""
+    if not config.GRAPH_DIR.exists():
+        raise FileNotFoundError(f"Graph directory not found: {config.GRAPH_DIR}")
+    return GraphLoader(config.GRAPH_DIR)

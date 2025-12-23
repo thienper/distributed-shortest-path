@@ -17,14 +17,14 @@ print("="*60)
 
 # Load training data
 try:
-    df = pd.read_csv('training_data/graph_large/training_samples.csv')
+    df = pd.read_csv('training_data/graph_medium/training_samples.csv')
     print(f"\n[DATA] Loaded {len(df)} training samples")
 except:
     print("[ERROR] No training data found!")
     sys.exit(1)
 
 # Load graph
-data_dir = Path('data/graphs/graph_large')
+data_dir = Path('data/graphs/graph_medium')
 nodes_df = pd.read_csv(data_dir / 'nodes.csv')
 edges_df = pd.read_csv(data_dir / 'edges.csv')
 
@@ -40,7 +40,7 @@ for _, row in edges_df.iterrows():
         adj[dst, src] = weight
 
 # Load model config
-config_path = Path('models/graph_large/config.json')
+config_path = Path('models/graph_medium/config.json')
 with open(config_path, 'r') as f:
     config = json.load(f)
 
@@ -51,7 +51,7 @@ model = ShortestPathModel(
     hidden_dim=config['hidden_dim'],
     num_layers=config['num_layers']
 )
-model.load_state_dict(torch.load('models/graph_large/best_model.pt', map_location='cpu'))
+model.load_state_dict(torch.load('models/graph_medium/best_model.pt', map_location='cpu'))
 model.eval()
 
 param_count = sum(p.numel() for p in model.parameters())

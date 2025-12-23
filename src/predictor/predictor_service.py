@@ -10,19 +10,18 @@ from src.predictor.dijkstra_baseline import DijkstraBaseline, MLPredictor, compa
 class PredictorService:
     """Service for path prediction"""
     
-    def __init__(self, graph_size: str = "medium"):
-        self.graph_size = graph_size
-        self.loader = get_default_graph_loader(graph_size)
+    def __init__(self):
+        self.loader = get_default_graph_loader()
         self.adj_matrix = self.loader.get_adjacency_matrix()
         self.node_embeddings = self.loader.get_node_features()
         
         self.dijkstra = DijkstraBaseline(self.adj_matrix)
         
-        # ✨ Load trained ML model from graph-specific directory
-        model_path = f'models/graph_{graph_size}'
+        # Load trained ML model for graph_medium
+        model_path = 'models/graph_medium'
         self.ml = MLPredictor(
             adj_matrix=self.adj_matrix,
-            model_path=model_path,    # Graph-specific path
+            model_path=model_path,
             node_features=None        # Auto-generate from degree
         )
         
@@ -122,10 +121,10 @@ class PredictorService:
 # Global service instance
 predictor_service = None
 
-def init_predictor_service(graph_size: str = "medium"):
-    """Initialize the predictor service"""
+def init_predictor_service():
+    """Initialize the predictor service for graph_medium"""
     global predictor_service
-    predictor_service = PredictorService(graph_size)
+    predictor_service = PredictorService()
     print("[OK] Predictor service initialized")
 
 def get_predictor_service() -> PredictorService:

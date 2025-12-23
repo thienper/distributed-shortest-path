@@ -19,8 +19,8 @@ EMBEDDINGS_PATH = DATA_DIR / "embeddings"
 OUTPUT_PREDICTIONS = DATA_DIR / "predictions.csv"
 METRICS_PATH = DATA_DIR / "metrics.csv"
 
-# Graph parameters
-DEFAULT_GRAPH_SIZE = "medium"  # small, medium, large
+# Graph configuration (fixed to medium)
+GRAPH_DIR = GRAPHS_DIR / "graph_medium"
 
 # Create directories if not exist
 GRAPHS_DIR.mkdir(parents=True, exist_ok=True)
