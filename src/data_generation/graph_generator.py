@@ -109,17 +109,11 @@ def main():
     """Generate all test graphs"""
     print("Generating test graphs...")
     
-    # Small graph: 100 nodes
-    G_small = GraphGenerator.generate_graph(100, 4, "barabasi")
-    GraphGenerator.save_graph_to_csv(G_small, config.GRAPHS_DIR, "graph_small")
     
     # Medium graph: 1000 nodes
     G_medium = GraphGenerator.generate_graph(1000, 5, "barabasi")
     GraphGenerator.save_graph_to_csv(G_medium, config.GRAPHS_DIR, "graph_medium")
     
-    # Large graph: 5000 nodes
-    G_large = GraphGenerator.generate_graph(5000, 3, "barabasi")
-    GraphGenerator.save_graph_to_csv(G_large, config.GRAPHS_DIR, "graph_large")
     
     print("[OK] All test graphs generated!")
 
