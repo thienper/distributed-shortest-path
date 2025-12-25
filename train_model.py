@@ -120,8 +120,9 @@ def main():
     print(f"{'='*60}")
     print(f"Final Train Loss: {results['best_train_loss']:.4f}")
     print(f"Final Test Loss: {results['best_test_loss']:.4f}")
-    print(f"Test RMSE: {results['test_rmse']:.4f}")
+    print(f"Test MSE: {results['test_rmse']:.4f}")
     print(f"Test MAPE: {results['test_mape']:.2f}%")
+    print(f"Test Accuracy: {100 - results['test_mape']:.2f}%")
     print(f"Model saved to: {trainer.model_dir}")
     print(f"{'='*60}\n")
     

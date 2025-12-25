@@ -106,20 +106,30 @@ class MLPredictor:
             self.model.load_state_dict(torch.load(model_weights_path, map_location=self.device))
             self.model.eval()
             
-            # Prepare input tensors
-            adj_tensor = torch.from_numpy(self.adj_matrix).float().to(self.device)
-            
-            if self.node_features is None:
-                # Use degree as features
-                degrees = np.array([self.adj_matrix[i].sum() for i in range(self.num_nodes)])
-                degrees = (degrees - degrees.mean()) / (degrees.std() + 1e-6)
-                self.node_features = degrees.reshape(-1, 1).astype(np.float32)
-            
-            features_tensor = torch.from_numpy(self.node_features).float().to(self.device)
-            
-            # Generate node embeddings
-            with torch.no_grad():
-                self.node_embeddings = self.model.encode(features_tensor, adj_tensor)
+            # Try to load pre-computed node embeddings
+            embeddings_path = os.path.join(model_path, 'node_embeddings.npy')
+            if os.path.exists(embeddings_path):
+                # Load cached embeddings
+                embeddings_np = np.load(embeddings_path)
+                self.node_embeddings = torch.from_numpy(embeddings_np).float().to(self.device)
+                print(f"[OK] Node embeddings loaded from cache: {embeddings_path}")
+                print(f"    Embeddings shape: {embeddings_np.shape}")
+            else:
+                # Calculate embeddings if not cached
+                print(f"[INFO] Computing node embeddings (not cached)...")
+                adj_tensor = torch.from_numpy(self.adj_matrix).float().to(self.device)
+                
+                if self.node_features is None:
+                    # Use degree as features
+                    degrees = np.array([self.adj_matrix[i].sum() for i in range(self.num_nodes)])
+                    degrees = (degrees - degrees.mean()) / (degrees.std() + 1e-6)
+                    self.node_features = degrees.reshape(-1, 1).astype(np.float32)
+                
+                features_tensor = torch.from_numpy(self.node_features).float().to(self.device)
+                
+                # Generate node embeddings
+                with torch.no_grad():
+                    self.node_embeddings = self.model.encode(features_tensor, adj_tensor)
             
             self.use_dijkstra = False
             print(f"[OK] GraphSAGE model loaded from {model_path}")

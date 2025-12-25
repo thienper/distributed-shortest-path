@@ -258,7 +258,7 @@ class ShortestPathTrainer:
                              weight_decay=config['weight_decay'])
         loss_fn = nn.MSELoss()
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, 
-                                                         patience=5, verbose=True)
+                                                         patience=5)
         
         # Training loop
         best_test_loss = float('inf')
@@ -364,6 +364,17 @@ class ShortestPathTrainer:
             
             logger.info(f"Test RMSE: {rmse:.4f}")
             logger.info(f"Test MAPE: {mape:.2f}%")
+            
+            # Compute and save node embeddings to file for faster inference
+            logger.info("Computing node embeddings for all nodes...")
+            with torch.no_grad():
+                embeddings = model.encode(node_features_tensor, adjacency_matrix)
+            
+            embeddings_path = self.model_dir / "node_embeddings.npy"
+            embeddings_np = embeddings.cpu().numpy()
+            np.save(embeddings_path, embeddings_np)
+            logger.info(f"Node embeddings saved to {embeddings_path}")
+            logger.info(f"Embeddings shape: {embeddings_np.shape}")
             
             # Save results
             with open(self.model_dir / "results.json", "w") as f:

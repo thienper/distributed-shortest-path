@@ -65,7 +65,7 @@ python quick_test.py
 
 ### **Step 6: Chạy Web App**
 ```bash
-python web_app/app.py
+.venv\Scripts\python web_app\app.py
 ```
 
 Truy cập: `http://localhost:5000`

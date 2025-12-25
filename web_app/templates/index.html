@@ -102,17 +102,22 @@
                 <div class="metrics-box">
                     <h3>📈 Performance Metrics</h3>
                     <div class="metric-item">
-                        <label>Avg Latency (ms)</label>
+                        <label>
+                            Avg Latency
+                            <span class="metric-value" id="metric-latency">0 ms</span>
+                        </label>
                         <div class="progress-bar">
                             <div class="progress-fill" id="latency-bar" style="width:0%"></div>
-                            <span class="metric-value" id="metric-latency">0 ms</span>
                         </div>
                     </div>
+
                     <div class="metric-item">
-                        <label>Model Accuracy</label>
+                        <label>
+                            Model Accuracy
+                            <span class="metric-value" id="metric-accuracy">0%</span>
+                        </label>
                         <div class="progress-bar">
                             <div class="progress-fill accuracy" id="accuracy-bar" style="width:0%"></div>
-                            <span class="metric-value" id="metric-accuracy">0%</span>
                         </div>
                     </div>
                 </div>

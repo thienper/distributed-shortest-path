@@ -1,5 +1,5 @@
 {
-  "num_samples": 5000,
+  "num_samples": 500,
   "input_dim": 1,
   "embedding_dim": 32,
   "hidden_dim": 64,
